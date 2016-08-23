@@ -3,17 +3,15 @@ class PartitionsController < ApplicationController
   def index
     @partitions = Partition.all
 
-    if request.xhr?
-      render json: { partitions: @partitions }
-    end
+    render json: { partitions: @partitions }
+
   end
 
   def show
     @partition = Partition.find_by(id: params[:id])
 
-    if request.xhr?
-      render json: { partition: @partition, folders: @partition.folders }
-    end
+    render json: { partition: @partition, folders: @partition.folders }
+
   end
 
 end
